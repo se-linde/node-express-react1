@@ -17,6 +17,7 @@ app.set('view engine', 'handlebars');
 // Setting the port number, to 2112, and launching the process. 
 app.set('port', process.env.PORT || 2112); 
 
+// Declaring the static middleware.
 app.use(express.static(__dirname + '/public'));
 
 
