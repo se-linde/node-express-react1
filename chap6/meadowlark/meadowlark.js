@@ -1,7 +1,12 @@
 // Initial chapter 3 exercise for Meadowlark Travel Agency. 
 // This is the 'app file'. 
 
-"use strict"; 
+// "use strict"; 
+
+(function () {
+   'use strict';
+   // this function is strict...
+}());
 
 var express = require('express'); 
 var fortune = require('./lib/fortune.js'); 
@@ -31,6 +36,14 @@ app.set('port', process.env.PORT || 2112);
 // Declaring the static middleware.
 app.use(express.static(__dirname + '/public'));
 
+// Set 'showTests' context property, if the querystring contains 'test=1'. 
+// Testing in Mocha, Chai. 
+
+app.use(function(req, res, next) {
+    res.locals.showTests = app.get('env') !== 'production' && 
+        req.query.test === '1';
+    next(); 
+});
 
 // two new routes. Routes must be above server codes. 
 app.get('/', function(req, res){
@@ -44,7 +57,9 @@ app.get('/about/contact', function(req, res){
 }); 
 
 app.get('/about', function(req, res){
-    res.render('about', {fortune: fortune.getFortune() }); 
+    res.render('about', {fortune: fortune.getFortune(), 
+    pageTestScript: 'qa/tests-about.js'             
+    }); 
 }); 
 
 // tour pages

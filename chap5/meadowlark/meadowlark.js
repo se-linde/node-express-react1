@@ -1,7 +1,12 @@
 // Initial chapter 3 exercise for Meadowlark Travel Agency. 
 // This is the 'app file'. 
 
-"use strict"; 
+// "use strict"; 
+
+(function () {
+   'use strict';
+   // this function is strict...
+}());
 
 var express = require('express'); 
 var fortune = require('./lib/fortune.js'); 
@@ -41,7 +46,9 @@ app.get('/about/contact', function(req, res){
 }); 
 
 app.get('/about', function(req, res){
-    res.render('about', {fortune: fortune.getFortune() }); 
+    res.render('about', {fortune: fortune.getFortune(), 
+    pageTestScript: 'qa/tests-about.js'    
+    });     
 }); 
 
 // custom 404 page - Page Not Found. 
