@@ -6,8 +6,13 @@
     Group Size: <input type="text" name="groupSize"><br>
     Email: <input type="email" name="email"><br>
     <input type="submit" value="Submit">
-    
-
-
-
 </form>
+
+
+{{#section 'jquery'}}
+    <script>
+        $(document).ready(function(){
+            $('input[name="referrer"]').val(document.referrer); 
+        })
+    </script>
+{{/section}}

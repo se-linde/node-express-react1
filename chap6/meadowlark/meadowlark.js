@@ -67,12 +67,12 @@ app.get('/tours/hood-river', function(req, res) {
    res.render('tours/hood-river');  
 });
 
-app.get('/tours/hood-river', function(req, res) {
-   res.render('tours/hood-river');  
+app.get('/tours/oregon-coast', function(req, res) {
+   res.render('tours/oregon-coast');  
 });
 
-app.get('/tours/hood-river', function(req, res) {
-   res.render('tours/hood-river');  
+app.get('/tours/request-group-rate', function(req, res) {
+   res.render('tours/request-group-rate');  
 });
 
 // custom 404 page - Page Not Found. 
@@ -82,9 +82,15 @@ app.use(function(req, res){
 }); 
 
 // Custom 500 page - Server Error. 
-app.use(function(req, res){
+/* app.use(function(req, res){
     res.status(500);
     res.render('500');  
+}); */ 
+
+app.use(function(err, req, res, next) {
+    console.error(err.stack); 
+    res.status(500);
+    res.render('500'); 
 }); 
 
 // Listening for the open port. 
